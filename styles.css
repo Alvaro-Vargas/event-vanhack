@@ -43,12 +43,10 @@
   --white-40: #788894;
 }
 body {
-  background: var(--brand-main-alpha);
-  /* background-image: linear-gradient(to right, var(--brand-main), var(--tertiary-main)); */
+  background: var(--white) ;
 }
 /* NavBar / Header */
 header {
-  border-bottom: 1px solid black;
   background-color: var(--white);
 }
 
@@ -98,33 +96,43 @@ header nav.header ul li.selected{
   border-bottom: 5px solid var(--brand-main);
 }
 
+.jumbotron{
+  width: 100%;
+  height: 300px;
+  background-color:var(--brand-main);
+  
+  box-shadow: 6px 6px 15px 0 rgb(0, 0, 0, 0.8);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.jumbotron span {
+  font-size: 80px;
+  font-weight: bold;
+  color: var(--white);
+
+  -webkit-text-stroke: 1px var(--white);
+
+}
+
+.jumbotron p{
+  color: var(--white);
+  
+  width: 80%;
+
+  margin-top: 30px;
+
+  font-size: 20px;
+  line-height: 30px;
+  stroke: black;
+
+}
 /* Content */
 main{
   margin: auto 50px;
-}
-
-main .jumbotron{
-  background-color: var(--white);
-  box-shadow: 6px 6px 15px 0 rgb(0, 0, 0, 0.8);
-
-  border-radius: 0 0 8px 8px;
-}
-main .jumbotron img {
-  width: 100%;
-  height: 300px;
-
-  object-fit: cover;
-
-}
-
-main .jumbotron h1 {
-  height: 80px;
-  width: 100%;
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-
-  color: var(--brand-main);
 }
 
 main .content {
@@ -141,10 +149,12 @@ main .content .cards .card {
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
 
   border-radius: 8px;
   border: 1px solid var(--brand-main);
   width: 420px;
+  height: 100%;
   padding: 10px;
 
   background: var(--white);
@@ -157,6 +167,38 @@ main .content .cards .card:hover {
   transition:  250ms;
 }
 
+main .content .cards .card .ribbon { 
+  height: 30px;
+  width: 200px;
+  background: var(--secondary-main);
+
+  position: absolute;
+  top: -10px;
+  left: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0 0 8px 8px;
+  box-shadow: 6px 6px 15px 0 rgb(0, 0, 0, 0.8);
+
+  color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+main .content .cards .card .ribbon::before { 
+ content: ''; 
+ position: absolute;
+ top: 0;
+ left: -10px;
+ border-left: 5px solid transparent;
+ border-right: 5px solid var(--secondary-dark);
+ border-top: 5px solid transparent;
+ border-bottom: 5px solid var(--secondary-dark);
+}
+
 main .content .cards .card img {
   width: 100%;
   height: 150px;
@@ -166,6 +208,7 @@ main .content .cards .card img {
   border-radius: 8px 8px 0 0;
 }
 
+/* EVENTS */
 main .content .cards .card span.event-type {
   color: var(--white);
   
@@ -177,6 +220,20 @@ main .content .cards .card span.event-type {
   border-radius: 0 0 10px 10px;
   height: 25px;
   background-image: linear-gradient(to right, var(--brand-main), var(--tertiary-main));
+}
+
+/* Leap */
+main .content .cards .card span.Leap { 
+  background-image: linear-gradient(to right, var(--success-dark), var(--tertiary-dark));
+}
+
+/* Mission */
+main .content .cards .card span.Mission {
+  background-image: linear-gradient(to right, var(--warning-dark), var(--warning-light));
+}
+/* Hackaton */
+main .content .cards .card span.Hackaton {
+  background-image: linear-gradient(to right, var(--danger-dark), var(--danger-light));
 }
 
 main .content .cards .card h1{
@@ -236,44 +293,9 @@ main .content .cards .card .information .date h1{
 
 main .content .cards .card .card-bottom{
   display: flex;
-  align-content: center;
-  justify-content: space-between;
-}
-
-main .content .cards .card .card-bottom .attending{
-  display: flex;
-}
-
-main .content .cards .card .card-bottom img.hackers{
-  width: 50px;
-  height: 50px;
-  background-color: var(--white-40);
-  border-radius: 50%;
-  border: 1px solid var(--white);
-}
-
-main .content .cards .card .card-bottom img.hackers:not(:first-child) {
-  position: relative;
-  left: -30px;
-}
-
-main .content .cards .card .card-bottom span.last{
-  width: 50px;
-  height: 50px;
-  background-color: var(--white-40);
-  border-radius: 50%;
-  border: 1px solid var(--white);
-  position: relative; 
-  left: -60px; 
-
-  display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-
-}
-
-main .content .cards .card .card-bottom span.last p{
-  color: var(--white);
 }
 
 main .content .cards .card .card-bottom .card-buttons{
@@ -283,7 +305,7 @@ main .content .cards .card .card-bottom .card-buttons{
   align-items: center;
 }
 
-main .content .cards .card .card-bottom .card-buttons button{
+main .content .cards .card .card-bottom button{
   background-color: var(--brand-main);
   color: var(--white);
   font-size: 15px;
@@ -296,13 +318,172 @@ main .content .cards .card .card-bottom .card-buttons button{
   border-radius: 8px;
 }
 
-main .content .cards .card .card-bottom .card-buttons button:not(:first-child){
-  margin-left: 5px;
+#modal {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;  
 }
 
-main .content .cards .card .card-bottom .card-buttons button.apply{
-  background-color: var(--secondary-dark);
+#modal.hidden {
+  display: none;
 }
+
+#modal .modal-card {
+  width: 1000px;
+  height: 500px;
+  background: white;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+#modal .modal-card .modal-top {
+  width: 100%;
+  height: 40px;
+  padding-right: 10px;
+  border-radius: 8px 8px 0 0;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  background-image: linear-gradient(to right, var(--brand-main), var(--tertiary-main));
+}
+
+/* Leap */
+#modal .modal-card .modal-top.Leap {
+  background-image: linear-gradient(to right, var(--success-dark), var(--tertiary-dark));
+} 
+
+/* Mission */
+#modal .modal-card .modal-top.Mission {
+  background-image: linear-gradient(to right, var(--warning-dark), var(--warning-light));
+}
+
+/* Hackaton */
+#modal .modal-card .modal-top.Hackaton {
+  background-image: linear-gradient(to right, var(--danger-dark), var(--danger-light));
+} 
+
+
+#modal .modal-card #close {
+  color: var(--white);
+
+  font-style: italic;
+  font-size: 15px;
+
+}
+#modal .modal-card img {
+  width: 100%;
+  height: 250px;
+
+  object-fit: cover;
+}
+
+#modal .modal-card .modal-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#modal .modal-card .modal-content h1 {
+  color: var(--brand-main);
+  margin-bottom: 10px;
+}
+
+#modal .modal-card .modal-content p {
+  flex: 1;
+  font-size: 20px;
+}
+
+#modal .modal-card .modal-content h2 {
+  color: var(--secondary-main);
+  font-size: 20px;
+}
+
+#modal .modal-card .modal-content .modal-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* share */
+#modal .modal-card .modal-content .modal-bottom .share {
+  display: flex;  
+  align-items: center;
+}
+
+#modal .modal-card .modal-content .modal-bottom .share span{
+  margin-right: 10px;
+}
+
+#modal .modal-card .modal-content .modal-bottom .share img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+#modal .modal-card .modal-content .modal-bottom button.apply{ 
+  background: var(--secondary-main);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+#modal .modal-card .modal-content .modal-bottom button:disabled{ 
+  background: var(--white-40);
+  
+}
+
+#modal-information {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  opacity: 0;
+
+  color: var(--white);
+}
+
+#modal-information.show {
+  visibility: visible;
+  top: 10px;
+  opacity: 1;
+  transition: 1s;
+}
+
+#modal-information h1 {
+  padding: 15px;
+  background-color: var(--white);
+  border-radius: 8px;
+  
+}
+
+#modal-information.success {
+  color: var(--success-main);
+}
+
+#modal-information.fail {
+  color: var(--danger-main);
+}
+
 
 @media(min-width: 1500px) {
   main .content .cards {
